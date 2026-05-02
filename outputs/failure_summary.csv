@@ -1,0 +1,6 @@
+system,failure_type,count
+plan_first_agent,incomplete_evidence,2
+single_pass_rag,incomplete_evidence,2
+single_pass_rag,overly_cautious,2
+single_pass_rag,incomplete_answer,1
+single_pass_rag,partial_answer,1

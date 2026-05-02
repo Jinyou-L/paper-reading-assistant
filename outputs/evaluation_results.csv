@@ -1,0 +1,1 @@
+question_id,paper_id,task_type,system,question,gold_answer,system_answer,cited_evidence,correctness_score,evidence_quality_score,grounding_score,navigation_score,not_answerable_score,latency_seconds,num_tool_calls,failure_type,notes

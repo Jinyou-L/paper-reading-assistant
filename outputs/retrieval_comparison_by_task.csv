@@ -1,0 +1,13 @@
+task_type,retrieval_method,n,avg_relevance,direct_evidence_rate
+baseline,bm25,4,1.5,0.5
+baseline,tfidf,4,1.75,0.75
+evidence_location,bm25,4,1.5,0.5
+evidence_location,tfidf,4,1.5,0.5
+experiment,bm25,4,1.25,0.25
+experiment,tfidf,4,1.75,0.75
+limitation,bm25,4,2.0,1.0
+limitation,tfidf,4,1.75,0.75
+method,bm25,4,1.5,0.5
+method,tfidf,4,1.25,0.25
+not_answerable,bm25,4,1.75,0.75
+not_answerable,tfidf,4,1.5,0.5
