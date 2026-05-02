@@ -10,27 +10,25 @@ Solo Agent Application with a RAG baseline.
 
 ## Overview
 
-This project builds and evaluates a lightweight paper reading assistant for evidence-grounded academic PDF question answering.
+This project builds a lightweight paper reading assistant for academic PDF question answering. The goal is to help students locate relevant evidence in research papers and answer structured questions about methods, baselines, experiments, limitations, and evidence locations.
 
-The goal is not only to generate answers about papers, but to help users locate and verify the evidence behind those answers. I frame academic paper QA as an **evidence navigation problem**, not just a summarization problem.
+The project compares two main systems:
 
-The main comparison is between:
-
-1. **Single-Pass RAG Baseline**: retrieves relevant chunks once and answers directly from those chunks.
-2. **Plan-First Agentic Retrieval**: first creates a retrieval plan, retrieves evidence using the planned query and a fallback query, and then answers with evidence and tool traces.
+1. **Single-Pass RAG Baseline**: retrieves relevant chunks once and answers directly.
+2. **Plan-First Agentic Retrieval**: first creates a retrieval plan, performs retrieval with tool traces, and then answers using evidence.
 
 The project also includes additional experiments on retrieval quality and a deeper checker-agent workflow.
 
 ## Corpus
 
-The corpus contains four public academic papers related to RAG, tool use, and agentic reasoning:
+The corpus contains four academic papers related to RAG, tool use, and agentic reasoning:
 
 - *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*
 - *SELF-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection*
 - *ReAct: Synergizing Reasoning and Acting in Language Models*
 - *Toolformer: Language Models Can Teach Themselves to Use Tools*
 
-PDFs are stored locally under `data/pdfs/` and are **not included** in this repository.
+PDFs are stored locally under `data/pdfs/` and are not included in the repository.
 
 The processed corpus is included as:
 
@@ -39,18 +37,16 @@ The processed corpus is included as:
 
 ## Pipeline
 
-The main pipeline is:
-
 1. Parse PDFs with PyMuPDF.
-2. Clean extracted text and remove noisy/reference chunks.
+2. Clean extracted text and remove references/noisy chunks.
 3. Split papers into overlapping chunks with page/section metadata.
-4. Retrieve relevant chunks using TF-IDF.
+4. Retrieve relevant chunks using TF-IDF and cosine similarity.
 5. Run the Single-Pass RAG baseline.
 6. Run the Plan-First Agentic Retrieval system.
-7. Evaluate outputs on a 24-question golden set.
+7. Evaluate outputs on a golden set of 24 questions.
 8. Run additional retrieval and checker-agent experiments.
 
-## Main Evaluation
+## Evaluation
 
 The evaluation set contains 24 questions across six categories:
 
@@ -61,9 +57,9 @@ The evaluation set contains 24 questions across six categories:
 - evidence location
 - not-answerable
 
-Each of the two main systems answers all 24 questions, producing 48 total outputs.
+Each main system answers all 24 questions, producing 48 total outputs.
 
-The outputs are manually scored using a 0–2 rubric on:
+Metrics:
 
 - correctness
 - evidence quality
@@ -82,11 +78,11 @@ The Plan-First Agent improved correctness, evidence quality, and navigation usef
 | Single-Pass RAG | 1.75 / 2 | 1.75 / 2 | 2.00 / 2 | 1.75 / 2 | 3.41s |
 | Plan-First Agent | 1.92 / 2 | 1.92 / 2 | 2.00 / 2 | 1.92 / 2 | 5.89s |
 
-The main finding is that the Plan-First Agent provides the best quality-latency tradeoff in this project. It improves evidence quality and navigation, but introduces additional latency.
+The agentic workflow improved evidence quality and navigation, but introduced additional latency.
 
 ## Additional Experiments
 
-In addition to the main comparison, this repository includes two deeper extensions.
+In addition to the main comparison between Single-Pass RAG and the Plan-First Agent, this repository includes additional experiments on retrieval quality and agentic error recovery.
 
 ### 1. Retrieval Comparison
 
@@ -101,7 +97,7 @@ The result suggests that switching between keyword retrieval methods alone did n
 
 ### 2. Page-Level Retrieval Metrics
 
-I also added page-level retrieval metrics using manually labeled gold evidence pages.
+I also evaluated page-level retrieval quality using manually labeled gold evidence pages.
 
 For the 20 answerable questions:
 
@@ -235,6 +231,8 @@ paper-reading-assistant/
 │   ├── evaluation_questions_with_gold_pages.csv
 │   └── parsed/
 ├── outputs/
+│   ├── baseline_outputs.csv
+│   ├── agent_outputs.csv
 │   ├── evaluation_results_full_scored.csv
 │   ├── evaluation_summary_full.csv
 │   ├── evaluation_summary_by_task.csv
@@ -245,23 +243,18 @@ paper-reading-assistant/
 │   ├── evaluation_results_three_systems_scored.csv
 │   ├── evaluation_summary_three_systems.csv
 │   └── failure_summary_three_systems.csv
-└── report/
-    ├── final_report_draft.md
-    ├── results_section.md
-    └── failure_analysis.md
+└── report.md
 ```
 
 ## Key Files
 
 ### Report
 
-- `report/final_report_draft.md`: full final project report
-- `report/results_section.md`: generated results section
-- `report/failure_analysis.md`: generated failure analysis
+- `report.md`: full final project report
 
 ### Data
 
-- `data/evaluation_questions.csv`: 24-question golden evaluation set
+- `data/evaluation_questions.csv`: the 24-question golden evaluation set
 - `data/evaluation_questions_with_gold_pages.csv`: evaluation questions with gold evidence pages
 - `data/chunks.json`: cleaned and chunked paper text
 
@@ -269,10 +262,10 @@ paper-reading-assistant/
 
 - `outputs/baseline_outputs.csv`: Single-Pass RAG outputs
 - `outputs/agent_outputs.csv`: Plan-First Agent outputs
-- `outputs/evaluation_results_full_scored.csv`: manually scored main evaluation
+- `outputs/evaluation_results_full_scored.csv`: manually scored main evaluation results
 - `outputs/evaluation_summary_full.csv`: overall main evaluation summary
 - `outputs/evaluation_summary_by_task.csv`: task-level main evaluation summary
-- `outputs/failure_summary.csv`: main failure summary
+- `outputs/failure_summary.csv`: main failure type summary
 
 ### Additional Experiment Outputs
 
@@ -297,4 +290,4 @@ The Plan-First Agent improves evidence quality and navigation, but it is slower 
 
 ## References
 
-See `report/final_report_draft.md` for full references.
+See `report.md` for full references.
