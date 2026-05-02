@@ -1,0 +1,25 @@
+question_id,paper_id,task_type,question,gold_answer,gold_evidence_section,gold_evidence_page,notes
+Q01,rag_2020,method,What is the main method proposed in this paper?,,,,
+Q02,self_rag_2023,method,How does SELF-RAG decide when to retrieve?,,,,
+Q03,react_2022,method,How does ReAct combine reasoning and acting?,,,,
+Q04,toolformer_2023,method,What tools does Toolformer use?,,,,
+Q05,react_2022,baseline,What baselines does ReAct compare against?,,,,
+Q06,rag_2020,baseline,What baselines are used in RAG's open-domain QA experiments?,,,,
+Q07,self_rag_2023,baseline,What baseline models or retrieval-augmented systems does SELF-RAG compare against?,,,,
+Q08,toolformer_2023,baseline,What baseline models does Toolformer compare against?,,,,
+Q09,rag_2020,experiment,What tasks or datasets are used to evaluate RAG?,,,,
+Q10,react_2022,experiment,What benchmarks are used to evaluate ReAct?,,,,
+Q11,self_rag_2023,experiment,What tasks are used to evaluate SELF-RAG?,,,,
+Q12,toolformer_2023,experiment,What downstream tasks or datasets are used to evaluate Toolformer?,,,,
+Q13,rag_2020,limitation,What problems with parametric-only language models motivate retrieval-augmented generation?,,,,
+Q14,react_2022,limitation,What failure modes or weaknesses of reasoning-only or acting-only approaches does ReAct discuss?,,,,
+Q15,self_rag_2023,limitation,What problem does SELF-RAG identify with retrieving a fixed number of passages in standard RAG?,,,,
+Q16,toolformer_2023,limitation,What limitations of Toolformer are discussed in the paper?,,,,
+Q17,rag_2020,evidence_location,Which evidence explains the difference between RAG-Sequence and RAG-Token?,,,,
+Q18,react_2022,evidence_location,Which evidence explains why interleaving thoughts and actions is useful in ReAct?,,,,
+Q19,self_rag_2023,evidence_location,Which evidence explains that SELF-RAG uses reflection tokens to decide retrieval and critique outputs?,,,,
+Q20,toolformer_2023,evidence_location,Which evidence explains how Toolformer filters API calls?,,,,
+Q21,rag_2020,not_answerable,Does the RAG paper discuss using GPT-4 as the generator model?,The provided evidence should be insufficient because GPT-4 is not discussed in the RAG 2020 paper.,,,not-answerable test
+Q22,react_2022,not_answerable,Does the ReAct paper evaluate the method on medical diagnosis tasks?,The provided evidence should be insufficient unless retrieved text explicitly mentions medical diagnosis evaluation.,,,not-answerable test
+Q23,self_rag_2023,not_answerable,Does SELF-RAG report experiments on image classification tasks?,"The provided evidence should be insufficient because the paper focuses on language tasks, not image classification.",,,not-answerable test
+Q24,toolformer_2023,not_answerable,Does Toolformer use a code execution tool for running Python programs?,The provided evidence should be insufficient unless the retrieved text explicitly mentions a Python/code execution tool.,,,not-answerable test
