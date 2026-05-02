@@ -112,7 +112,7 @@ Workflow:
 plan → retrieve → judge evidence sufficiency → retry if insufficient → answer
 ```
 
-The checker agent triggered retry retrieval for 13 out of 24 questions.
+The checker agent triggered retry retrieval for 13 out of 24 questions. 
 
 | System | Correctness | Evidence Quality | Grounding | Navigation | Avg Latency |
 |---|---:|---:|---:|---:|---:|
