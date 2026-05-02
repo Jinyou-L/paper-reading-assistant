@@ -1,0 +1,11 @@
+pymupdf
+pandas
+numpy
+tqdm
+scikit-learn
+openai
+python-dotenv
+streamlit
+tabulate
+rank-bm25
+sentence-transformers
