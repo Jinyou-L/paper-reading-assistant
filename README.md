@@ -21,19 +21,13 @@ The project also includes additional experiments on retrieval quality and a deep
 
 ## Corpus
 
-The corpus contains four academic papers related to RAG, tool use, and agentic reasoning:
+The corpus contains a few academic papers related to RAG, tool use, and agentic reasoning.
+For example:
 
 - *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*
 - *SELF-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection*
 - *ReAct: Synergizing Reasoning and Acting in Language Models*
 - *Toolformer: Language Models Can Teach Themselves to Use Tools*
-
-PDFs are stored locally under `data/pdfs/` and are not included in the repository.
-
-The processed corpus is included as:
-
-- `data/chunks.json`
-- `data/parsed/`
 
 ## Pipeline
 
