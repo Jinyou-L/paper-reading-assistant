@@ -95,8 +95,6 @@ These chunks were stored in `data/chunks.json`.
 
 The project compares two main systems.
 
----
-
 ### 4.1 Single-Pass RAG Baseline
 
 The Single-Pass RAG system is the baseline. It follows the standard retrieval-then-generation workflow:
@@ -109,6 +107,11 @@ Retrieve top-k chunks once
 Pass retrieved chunks to LLM
     ↓
 Generate answer using evidence
+```
+
+This baseline is simple, fast, and easy to implement. It is a reasonable baseline for academic PDF question answering because it represents the common RAG workflow.
+
+However, it has an important weakness: if the first retrieval step misses the best evidence, the generated answer may be incomplete or overly cautious.
 
 ### 4.2 Plan-First Agentic Retrieval
 
@@ -139,6 +142,8 @@ The agent uses several tools or modules:
 The goal is to make retrieval more deliberate and inspectable. The system exposes a tool trace so that the user can see how the answer was produced.
 
 This design is intentionally constrained. I did not build an open-ended autonomous agent that can call arbitrary tools. Instead, I used a limited retrieval workflow so that behavior is easier to debug and evaluate.
+
+## 5. Design Decisions
 
 ## 5. Design Decisions
 
