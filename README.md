@@ -1,6 +1,6 @@
 # Paper Reading Assistant
      
-## Project Title
+## Project Title 
 
 **Paper Reading Assistant: Comparing Single-Pass RAG with Agentic Retrieval for Academic PDF Question Answering**
 
